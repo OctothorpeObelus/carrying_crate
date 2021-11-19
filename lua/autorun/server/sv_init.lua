@@ -8,7 +8,8 @@ util.AddNetworkString("octoCarryingCrateCustomResponse")
 
 CreateConVar("carrying_crate_max_connected_ents", 6, FCVAR_NONE, "The number of entities connected to a secured prop that will also be parented to the crate. Good for controlling performance, as large contraptions will cause lag spikes when parented all at once. Some contraptions are not physically stable when being unloaded.", 1, 65535)
 CreateConVar("carrying_crate_custom_size_limit", 512, FCVAR_NONE, "The maximum and minimum limit of the box size on custom crates.", 1)
-CreateConVar("carrying_crate_force_mass_accumulation", 0, FCVAR_NONE, "0 = Entity's choice. 1 = Force mass acumulation for all crates. 2 = Disable mass accumulation for all crates.", 0, 2)
+CreateConVar("carrying_crate_force_mass_accumulation", 0, FCVAR_NONE, "Makes the crate weigh the sum of the items inside of it. 0 = Entity's choice. 1 = Force mass acumulation for all crates. 2 = Disable mass accumulation for all crates.", 0, 2)
+CreateConVar("carrying_crate_force_content_validation", 0, FCVAR_NONE, "Content validation checks to see if the prop trying to be carried has its center of mass within the crate boundaries. If it is not then it will not be carried. 0 = Entity's choice. 1 = Force content validation for all crates. 2 = Disable content validation for all crates.", 0, 2)
 
 --Thanks, shadowscion
 local function checkOwner(ply, ent)
@@ -40,10 +41,18 @@ carrying_crate.init = function(this)
 
     --Determine mass accumulation settings.
     local svma = GetConVar("carrying_crate_force_mass_accumulation"):GetInt()
+    local svvc = GetConVar("carrying_crate_force_content_validation"):GetInt()
+
     if svma == 1 then
         this.AccumulateMass = true
     elseif svma == 2 then
         this.AccumulateMass = false
+    end
+
+    if svvc == 1 then
+        this.ValidateContents = true
+    elseif svvc == 2 then
+        this.ValidateContents = false
     end
 
 	local Phys = this:GetPhysicsObject()
@@ -154,11 +163,19 @@ carrying_crate.used = function(this)
                 
                 if this.ValidateContents then
                     localPos = this:WorldToLocal(Ents[i]:LocalToWorld(Ents[i]:GetPhysicsObject():GetMassCenter()))
-                else
-                    localPos = this:WorldToLocal(Ents[i]:GetPos())
-                end
 
-                if not localPos:WithinAABox(this.Box.min, this.Box.max) then continue end
+                    if not localPos:WithinAABox(this.Box.min, this.Box.max) then continue end
+                else
+                    --5 point check if center of mass check isn't required.
+                    localPos = this:WorldToLocal(Ents[i]:GetPos())
+                    localPos2, localPos3 = Ents[i]:GetCollisionBounds()
+                    localPos2 = this:WorldToLocal(Ents[i]:LocalToWorld(localPos2))
+                    localPos3 = this:WorldToLocal(Ents[i]:LocalToWorld(localPos3))
+                    localPos4 = -localPos2
+                    localPos5 = -localPos3
+
+                    if not localPos:WithinAABox(this.Box.min, this.Box.max) and not localPos2:WithinAABox(this.Box.min, this.Box.max) and not localPos3:WithinAABox(this.Box.min, this.Box.max) and not localPos4:WithinAABox(this.Box.min, this.Box.max) and not localPos5:WithinAABox(this.Box.min, this.Box.max) then continue end
+                end
 
 				local pos = this:WorldToLocal(Ents[i]:GetPos())
 				local ang = this:WorldToLocalAngles(Ents[i]:GetAngles())

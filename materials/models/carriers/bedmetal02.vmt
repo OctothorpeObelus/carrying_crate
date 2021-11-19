@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/carriers/bedmetal02"
+	"$blendtintbybasealpha" "1"
+}

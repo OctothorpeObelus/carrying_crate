@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 ENT.Type        = "anim"
-ENT.PrintName   = "Tiny Truck Bed"
+ENT.PrintName   = "5ft Truck Bed"
 ENT.Author      = "Octo"
 
 ENT.Category = "Carrying Crates"

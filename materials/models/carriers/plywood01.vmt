@@ -1,4 +1,5 @@
 "VertexlitGeneric"
 {
 	"$basetexture" "models/carriers/plywood01"
+	"$blendtintbybasealpha" "1"
 }

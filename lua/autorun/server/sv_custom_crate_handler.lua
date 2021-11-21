@@ -1,5 +1,5 @@
 --TODO: Move clientside rendering hook here.
-/* 
+--[[
 local ent = nil
 
 net.Start("octoCarryingCrateCustomEntRequest")
@@ -25,5 +25,5 @@ end)
 hook.Add("OnContextMenuClose", "octoCarryingCrateOnContextMenuClose", function()
     hook.Remove("PreDrawOpaqueRenderables", "octoCarryingCratePreDrawOpaqueRenderables")
 end)
-*/
+]]--
 

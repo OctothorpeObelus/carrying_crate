@@ -85,7 +85,7 @@ carrying_crate.init = function(this)
     end
 end
 
---This adds all new custom crates to a table so their bounding boxes can be
+--[[--This adds all new custom crates to a table so their bounding boxes can be
 --context menu is open.
 carrying_crate.registerCustom = function(this)
     table.insert( carrying_crate_custom, this )
@@ -102,6 +102,7 @@ end
 carrying_crate.getCustom = function()
     return carrying_crate_custom
 end
+]]--
 
 --Replaces ENT:Use()
 carrying_crate.used = function(this)
@@ -299,7 +300,7 @@ carrying_crate.onremove = function(this)
 end
 
 --Net message to send the client the custom crates table.
-net.Receive("octoCarryingCrateCustomRequest", function(len, ply)
+--[[net.Receive("octoCarryingCrateCustomRequest", function(len, ply)
     net.Start("octoCarryingCrateCustomResponse")
     net.WriteInt(table.Count(carrying_crate_custom), 64)
     for i in pairs(carrying_crate_custom) do
@@ -307,4 +308,4 @@ net.Receive("octoCarryingCrateCustomRequest", function(len, ply)
         net.WriteEntity(carrying_crate_custom[i])
     end
     net.Send(ply)
-end)
+end)]]--

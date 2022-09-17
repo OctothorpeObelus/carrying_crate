@@ -155,7 +155,7 @@ carrying_crate.used = function(this)
     local emergencyExit = false --Called if too many props to constrain.
 
 	for i in ipairs(Ents) do
-		 if Ents[i]:GetClass() ~= "player" and checkOwner(this:GetCreator(), this) and IsValid(Ents[i]) and IsValid(Ents[i]:GetPhysicsObject()) then
+		if Ents[i]:GetClass() ~= "player" and checkOwner(Ents[i]:CPPIGetOwner(), this) and IsValid(Ents[i]) and IsValid(Ents[i]:GetPhysicsObject()) then
 			if not IsValid(Ents[i]:GetParent()) and constraint.GetAllConstrainedEntities(this)[Ents[i]] == nil then
                 
                 --Make sure the object is within the detection box

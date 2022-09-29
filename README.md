@@ -1,5 +1,6 @@
 # carrying_crate
- Garry's Mod addon that adds useful carrying crates for sandbox and roleplay usage.
+ Garry's Mod addon that adds useful carrying crates for sandbox and roleplay usage.<br>
+ Workshop Link (Recommended): https://steamcommunity.com/sharedfiles/filedetails/?id=2656860732
 
 **List of serverside console variables:**
 | **Variable**                            | **Default Value** | **Minimum Value** | **Maximum Value** | **Description**                                                                                                                                                                                                                                                                  |

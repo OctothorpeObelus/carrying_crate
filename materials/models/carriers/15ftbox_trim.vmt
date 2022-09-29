@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	$basetexture	"models/carriers/15ftbox_trim"
+	$surfaceprop	metalvehicle
+	$bumpmap	"models/carriers/15ftbox_trim_normal"
+	$normalmapalphaenvmapmask	"true"
+}

@@ -1,11 +1,11 @@
 AddCSLuaFile()
 
 ENT.Type        = "anim"
-ENT.PrintName   = "5ft Truck Bed"
+ENT.PrintName   = "[Legacy] 5ft Truck Bed"
 ENT.Author      = "Octo"
 
 ENT.Category = "Carrying Crates"
-ENT.Spawnable       = true
+ENT.Spawnable       = false
 ENT.AdminSpawnable  = false
 
 --Crate attributes

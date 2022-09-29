@@ -84,7 +84,7 @@ end
 if SERVER then
     function ENT:Initialize()
         carrying_crate.init(self)
-        --carrying_crate.registerCustom(self)
+        carrying_crate.registerCustom(self)
     end
 
     function ENT:Use(activator, caller, useType, value)
@@ -122,7 +122,7 @@ if SERVER then
     end
 
     function ENT:OnRemove()
-        --carrying_crate.removeCustom(self)
+        carrying_crate.removeCustom(self)
         carrying_crate.onremove(self)
     end
 

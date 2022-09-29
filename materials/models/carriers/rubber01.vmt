@@ -1,4 +1,5 @@
 "VertexlitGeneric"
 {
 	"$basetexture" "models/carriers/rubber01"
+	"$blendtintbybasealpha" "1"
 }

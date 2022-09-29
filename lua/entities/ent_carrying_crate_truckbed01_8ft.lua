@@ -1,15 +1,15 @@
 AddCSLuaFile()
 
 ENT.Type        = "anim"
-ENT.PrintName   = "[Legacy] 10ft Truck Bed"
-ENT.Author      = "Octo"
+ENT.PrintName   = "8ft Truck Bed"
+ENT.Author      = "Geemar"
 
 ENT.Category = "Carrying Crates"
-ENT.Spawnable       = false
+ENT.Spawnable       = true
 ENT.AdminSpawnable  = false
 
 --Crate attributes
-ENT.Model = "models/carriers/bedsmall01.mdl"
+ENT.Model = "models/carriers/truckbed01_8ft.mdl"
 ENT.AccumulateMass = true
 
 -- Whitelist of entity classes that can be put in the box.
@@ -18,8 +18,8 @@ ENT.Whitelist = {
     "prop_vehicle_prisoner_pod"
 }
 ENT.Box = {
-    max = Vector(58.097, -32.986, 34.431),
-    min = Vector(-61.594, 32.963, -0.419)
+    max = Vector(-36, 39, -0.405),
+    min = Vector(58, -39, 33.5)
 }
 
 ENT.TippingPoint = {
@@ -48,7 +48,7 @@ if SERVER then
     function ENT:Think()
         carrying_crate.think(self)
     end
-
+    
     function ENT:OnRemove()
         carrying_crate.onremove(self)
     end

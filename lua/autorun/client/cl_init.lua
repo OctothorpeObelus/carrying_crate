@@ -27,7 +27,7 @@ net.Receive("octoCarryingCrateCustomResponse", function ()
     end
 end)
 
---[[hook.Add("OnContextMenuOpen", "octoCarryingCrateOnContextMenuOpen", function()
+hook.Add("OnContextMenuOpen", "octoCarryingCrateOnContextMenuOpen", function()
     --if table.Count(crates) == 0 then
         net.Start("octoCarryingCrateCustomRequest")
         net.SendToServer()
@@ -50,8 +50,8 @@ end)
             end
         end
     end)
-end)]]--
+end)
 
---[[hook.Add("OnContextMenuClose", "octoCarryingCrateOnContextMenuClose", function()
+hook.Add("OnContextMenuClose", "octoCarryingCrateOnContextMenuClose", function()
     hook.Remove("PreDrawOpaqueRenderables", "octoCarryingCratePreDrawOpaqueRenderables")
-end)]]--
+end)

@@ -16,6 +16,7 @@ net.Receive("octoCarryingCrateEmergencyExit", function()
     notification.AddLegacy("[Carrying Crate] Too many constrained entities to connect! ("..count.." > "..max..")", NOTIFY_ERROR, 7)
 end)
 
+--[[
 --Fetch the response contianing all custom crates.
 net.Receive("octoCarryingCrateCustomResponse", function ()
     local count = net.ReadInt(64)
@@ -55,3 +56,4 @@ end)
 hook.Add("OnContextMenuClose", "octoCarryingCrateOnContextMenuClose", function()
     hook.Remove("PreDrawOpaqueRenderables", "octoCarryingCratePreDrawOpaqueRenderables")
 end)
+]]
